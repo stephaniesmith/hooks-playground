@@ -10,6 +10,14 @@ export class ResourceList extends Component {
     this.setState({ resources: data })
   }
 
+  componentDidUpdate = async({ resource }) => {
+    if(resource !== this.props.resource) {
+        const { data } = await axios.get(`https://jsonplaceholder.typicode.com/${this.props.resource}`)
+    
+        this.setState({ resources: data })
+    }
+  }
+
   render() {
     return (
       <div>
