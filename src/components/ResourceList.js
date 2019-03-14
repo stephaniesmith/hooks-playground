@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const ResourceList = async({ resource }) => {
+const ResourceList = ({ resource }) => {
   const [resources, setResources] = useState([]);
 
   const fetchResource = async() => {
@@ -11,14 +11,10 @@ const ResourceList = async({ resource }) => {
   }
 
   useEffect(() => {
-    fetchResource(resource);
-  }, []);
+    fetchResource();
+  }, [resource]);
 
-    return (
-      <div>
-        {resources.length}
-      </div>
-    );
-}
+  return <div>{resources.length}</div>;
+};
 
 export default ResourceList;
